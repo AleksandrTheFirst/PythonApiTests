@@ -23,7 +23,8 @@ for i in method:
         response = requests.delete("https://playground.learnqa.ru/ajax/api/compare_query_type", data=i)
         print(response.status_code)
         print(response.text)
+    else:
+        response = requests.put("https://playground.learnqa.ru/ajax/api/compare_query_type")
+        print(response.status_code)
+        print(response.text)
 
-response = requests.put("https://playground.learnqa.ru/ajax/api/compare_query_type")
-print(response.status_code)
-print(response.text)
