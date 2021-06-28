@@ -44,11 +44,12 @@ for i in pass_from_wiki:
     print(f"Cookie = {cookie}")
     check_cookie = requests.get("https://playground.learnqa.ru/ajax/api/check_auth_cookie",
                                 cookies = cookie)
-    if check_cookie != "You are authorized":
+    if check_cookie.text != "You are authorized":
         print(check_cookie.text)
         print(f"Password {password} is not valid.")
         continue
     else:
+        print(check_cookie.text)
         print(f"Password {password} is valid.")
         break
 
