@@ -39,15 +39,16 @@ for i in pass_from_wiki:
     password = i
     get_cookies_response = requests.post("https://playground.learnqa.ru/ajax/api/get_secret_password_homework",
                                          data={"login": login, "password": password})
-    cookie = get_cookies_response.cookies['auth_cookie']
+    cookie_value = get_cookies_response.cookies.get('auth_cookie')
+    cookie = {'auth_cookie': cookie_value}
     print(f"Cookie = {cookie}")
     check_cookie = requests.get("https://playground.learnqa.ru/ajax/api/check_auth_cookie",
-                                params={"auth_cookie": cookie})
+                                cookies = cookie)
     if check_cookie != "You are authorized":
         print(check_cookie.text)
         print(f"Password {password} is not valid.")
         continue
     else:
-        print(check_cookie.text)
         print(f"Password {password} is valid.")
         break
+
