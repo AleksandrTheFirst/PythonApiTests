@@ -1,6 +1,6 @@
 import requests
 
-method = ["GET", "POST", "PUT", "DELETE", "HEAD"]
+method = ["GET", "POST", "PUT", "DELETE"]
 
 for i in method:
     response = requests.get("https://playground.learnqa.ru/ajax/api/compare_query_type", params=i)
@@ -23,7 +23,14 @@ for i in method:
     print(response.status_code)
     print(response.text)
 
+    response = requests.head("https://playground.learnqa.ru/ajax/api/compare_query_type", data=i)
+    print(f"This is HEAD request with parameter = {i}")
+    print(response.status_code)
+    print(response.text)
+
 response = requests.put("https://playground.learnqa.ru/ajax/api/compare_query_type")
 print("This is PUT request without parameters.")
 print(response.status_code)
 print(response.text)
+
+
