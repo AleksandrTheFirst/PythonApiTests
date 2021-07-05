@@ -35,7 +35,10 @@ pass_from_wiki = [
     "password1",	"0",	"trustno1",	"starwars",	"password1",	"trustno1",	"qwerty123",	"123qwe"
 ]
 
-for i in pass_from_wiki:
+pass_from_wiki_updated = list(set(pass_from_wiki))
+print(pass_from_wiki_updated)
+
+for i in pass_from_wiki_updated:
     password = i
     get_cookies_response = requests.post("https://playground.learnqa.ru/ajax/api/get_secret_password_homework",
                                          data={"login": login, "password": password})
