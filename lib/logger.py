@@ -5,6 +5,7 @@ import os
 class Logger:
     file_name = f"logs/log_" + str(datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")) + ".log"
 
+    # classmethod - для образения к полям класса через cls
     @classmethod
     def _write_log_to_file(cls, data: str):
         with open(cls.file_name, 'a', encoding='utf-8') as logger_file:
@@ -12,6 +13,7 @@ class Logger:
 
     @classmethod
     def add_requests(cls, url: str, data: dict, headers: dict, cookies: dict, method: str):
+        # os.environ.get - какой тест запущен и как он называется
         testname = os.environ.get('PYTEST_CURRENT_TEST')
 
         data_to_add = f"\n-----\n"
@@ -31,10 +33,10 @@ class Logger:
         cookies_as_dict = dict(response.cookies)
         headers_as_dict = dict(response.headers)
 
-        data_to_add = f"Response code: {response.status_cade}"
-        data_to_add += f"Response text: {response.text}"
-        data_to_add += f"Response headers: {headers_as_dict}"
-        data_to_add += f"Response cookies: {cookies_as_dict}"
-        data_to_add += f"\n-----\n"
+        data_to_add = f"Response CODE: {response.status_cade}\n"
+        data_to_add += f"Response TEXT: {response.text}\n"
+        data_to_add += f"Response HEADERS: {headers_as_dict}\n"
+        data_to_add += f"Response COOKIES: {cookies_as_dict}\n"
+        data_to_add += "\n-----\n"
 
         cls._write_log_to_file(data_to_add)
