@@ -1,5 +1,6 @@
 import datetime
 import os
+from requests import Response
 
 
 class Logger:
@@ -33,7 +34,7 @@ class Logger:
         cookies_as_dict = dict(response.cookies)
         headers_as_dict = dict(response.headers)
 
-        data_to_add = f"Response CODE: {response.status_cade}\n"
+        data_to_add = f"Response CODE: {response.status_code}\n"
         data_to_add += f"Response TEXT: {response.text}\n"
         data_to_add += f"Response HEADERS: {headers_as_dict}\n"
         data_to_add += f"Response COOKIES: {cookies_as_dict}\n"

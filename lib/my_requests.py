@@ -29,7 +29,7 @@ class MyRequests:
         if cookies is None:
             cookies = {}
 
-        Logger.add_request(url, data, headers, cookies, method)
+        Logger.add_requests(url, data, headers, cookies, method)
 
         if method == 'GET':
             response = requests.get(url, params=data, headers=headers, cookies=cookies)

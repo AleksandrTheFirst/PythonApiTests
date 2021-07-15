@@ -3,6 +3,7 @@ import json.decoder
 from requests import Response
 from datetime import datetime
 
+
 class BaseCase:
     def get_cookie(self, response: Response, cookie_name):
         assert cookie_name in response.cookies, f"Cannot find cookie {cookie_name} in the last response"
