@@ -16,6 +16,7 @@ eggs/
 .eggs/
 logs/*
 lib64/
+logs/
 parts/
 sdist/
 var/

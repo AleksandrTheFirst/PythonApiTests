@@ -1,4 +1,3 @@
-import requests
 from lib.assertions import Assertions
 from lib.base_case import BaseCase
 from lib.my_requests import MyRequests
@@ -6,7 +5,7 @@ from lib.my_requests import MyRequests
 
 class TestUserRegistry(BaseCase):
 
-    def test_create_user_sucess(self):
+    def test_create_user_success(self):
         data = self.prepare_registration_data()
 
         response = MyRequests.post("/user", data=data)
@@ -20,7 +19,6 @@ class TestUserRegistry(BaseCase):
 
         response = MyRequests.post("/user", data=data)
 
-        assert response.status_code == 400, f"Unexpected status code {response.status_code}"
         Assertions.assert_code_status(response, 400)
         assert response.content.decode(
             "utf-8") == f"Users with email '{email}' already exists", f"Unexpected response content {response.content}"

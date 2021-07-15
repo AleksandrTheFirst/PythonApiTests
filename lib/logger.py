@@ -9,8 +9,13 @@ class Logger:
     # classmethod - для образения к полям класса через cls
     @classmethod
     def _write_log_to_file(cls, data: str):
-        with open(cls.file_name, 'a', encoding='utf-8') as logger_file:
-            logger_file.write(data)
+        if os.path.exists("D:\\PythonApiTests\\logs"):
+            with open(cls.file_name, 'a', encoding='utf-8') as logger_file:
+                logger_file.write(data)
+        else:
+            path = os.getcwd()
+            print(path)
+            os.mkdir("D:\\PythonApiTests\\logs")
 
     @classmethod
     def add_requests(cls, url: str, data: dict, headers: dict, cookies: dict, method: str):
