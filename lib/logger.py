@@ -6,7 +6,7 @@ from requests import Response
 class Logger:
     file_name = f"logs/log_" + str(datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")) + ".log"
 
-    # classmethod - для образения к полям класса через cls
+    # classmethod - для обращения к полям класса через cls
     @classmethod
     def _write_log_to_file(cls, data: str):
         if os.path.exists("D:\\PythonApiTests\\logs"):

@@ -17,6 +17,7 @@ eggs/
 logs/*
 lib64/
 logs/
+test_results/
 parts/
 sdist/
 var/
