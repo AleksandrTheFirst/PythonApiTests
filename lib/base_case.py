@@ -25,7 +25,7 @@ class BaseCase:
 
     def prepare_registration_data(self, email=None):
         if email is None:
-            self.generate_email()
+            email = self.generate_email()
         return {
             'password': '123',
             'username': 'learnqa',
