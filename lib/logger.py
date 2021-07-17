@@ -13,8 +13,6 @@ class Logger:
             with open(cls.file_name, 'a', encoding='utf-8') as logger_file:
                 logger_file.write(data)
         else:
-            path = os.getcwd()
-            print(path)
             os.mkdir("D:\\PythonApiTests\\logs")
 
     @classmethod

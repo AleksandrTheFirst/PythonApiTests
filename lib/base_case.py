@@ -25,10 +25,7 @@ class BaseCase:
 
     def prepare_registration_data(self, email=None):
         if email is None:
-            base_part = "learnqa"
-            domain = "example.com"
-            random_part = datetime.now().strftime("%m%d%Y%H%M%S")
-            email = f"{base_part}{random_part}@{domain}"
+            self.generate_email()
         return {
             'password': '123',
             'username': 'learnqa',
@@ -36,3 +33,9 @@ class BaseCase:
             'lastName': 'learnqa',
             'email': email
         }
+
+    @staticmethod
+    def generate_email(base_part="learnqa", domain="example.com"):
+        random_part = datetime.now().strftime("%m%d%Y%H%M%S")
+        email = f"{base_part}{random_part}@{domain}"
+        return email
