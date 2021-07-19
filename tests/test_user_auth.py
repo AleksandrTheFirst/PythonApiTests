@@ -17,14 +17,11 @@ class TestUserAuth(BaseCase):
             'password': '1234'
         }
         response1 = MyRequests.post("/user/login", data=data)
-        print("\n")
-        print(f"Status code from response1 = {response1.status_code}")
-        print(response1.json())
         self.auth_sid = self.get_cookie(response1, "auth_sid")
         self.token = self.get_header(response1, "x-csrf-token")
         self.user_id_from_auth_method = self.get_json_value(response1, "user_id")
 
-    @allure.description("This test successfully authorize userby email and password")
+    @allure.description("This test successfully authorize user by email and password")
     def test_auth_user(self):
 
         response2 = MyRequests.get(

@@ -28,9 +28,9 @@ class BaseCase:
             email = self.generate_email()
         return {
             'password': '123',
-            'username': 'learnqa',
-            'firstName': 'learnqa',
-            'lastName': 'learnqa',
+            'username': 'username_learnqa',
+            'firstName': 'firstName_learnqa',
+            'lastName': 'lastName_learnqa',
             'email': email
         }
 

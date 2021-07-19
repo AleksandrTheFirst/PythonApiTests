@@ -14,6 +14,16 @@ class Assertions:
         assert response_as_dict[name] == expected_value, error_msg
 
     @staticmethod
+    def assert_json_value_by_email(response: Response, email, expected_value, error_msg):
+        try:
+            response_as_dict = response.json()
+        except json.JSONDecodeError:
+            assert False, f"Response is not in JSON format. Response text is '{response.text}'"
+
+        assert email in response_as_dict, f"Response JSON name doesn't have key '{email}'"
+        assert response_as_dict[email] == expected_value, error_msg
+
+    @staticmethod
     def assert_json_has_key(response: Response, name):
         try:
             response_as_dict = response.json()
