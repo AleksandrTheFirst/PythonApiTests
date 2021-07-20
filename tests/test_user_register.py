@@ -1,3 +1,4 @@
+import allure
 import pytest
 
 from lib.assertions import Assertions
@@ -32,6 +33,7 @@ class TestUserRegistry(BaseCase):
         assert response.content.decode(
             "utf-8") == f"Users with email '{email}' already exists", f"Unexpected response content {response.content}"
 
+    @allure.step('data')
     @pytest.mark.parametrize('data', data)
     def test_create_user_without_one_field(self, data):
         response = MyRequests.post("/user", data=data)
@@ -66,6 +68,7 @@ class TestUserRegistry(BaseCase):
         assert response.content.decode(
             "utf-8") == f"The value of 'firstName' field is too short", f"Unexpected response content {response.content}"
 
+    allure.title("This test creates user with 256 chars in first name")
     def test_create_user_with_too_long_first_name(self):
         data = {
             'password': '123',
